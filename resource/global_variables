@@ -1,0 +1,5 @@
+*** Keywords ***
+Set Variables For The Budget Site
+    set global variable      ${BUDGET_URL}      "https://budget.com"
+    set global variable      ${CHROME_BROWSER}   "chrome"
+    set global variable      ${LOCATION}    "Austin Bergstrom Intl Airport, Austin"

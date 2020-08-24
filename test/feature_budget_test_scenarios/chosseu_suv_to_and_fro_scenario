@@ -1,0 +1,27 @@
+*** Settings ***
+Test Setup      Run Keyword    Set Variables For The Budget Site
+
+Test Teardown     Run Keword    Close Browser
+
+Resource    ${EXECDIR}/resource/global_variables
+Library     ${EXECDIR}/library/budget_lib/budget_robot_interface.py
+Library     SeleniumLibrary
+
+*** Test Cases ***
+Scenario to select a SUV
+    [Documentation]
+    [Tags]
+
+    Launch Budget Site     ${BUDGET_URL}     ${CHROME_BROWSER}
+    Select Location     ${LOCATION}
+    ${pick_up_date}    Select PickupDate
+    ${return_date}    Select Return_date    ${pick_up_date}
+    Select A CAR
+    ### This keyword will select the lowest price SUV from the available value###
+    ${vehicl_name}    SELECT CAR TYPE    ${CAR_TYPE}
+    ${estimated|_total_amount}     Validate Selected Details    ${LOCATION}     ${LOCATION}    ${vehicl_name}
+
+
+
+
+
